@@ -1,16 +1,18 @@
 print("=== Calculadora de Pintura ===")
 
+import math
+
 # Tamanho da parede
 altura_parede = float(input("Altura da parede (m): "))
 largura_parede = float(input("Largura da parede (m): "))
 
 # Tamanho da porta
-altura_porta = float(input("Altura da porta (m): "))
-largura_porta = float(input("Largura da porta (m): "))
+altura_porta = float(input("Altura da porta (m) (Se não tiver, digite '0'): "))
+largura_porta = float(input("Largura da porta (m) (Se não tiver, digite '0'): "))
 
 # Tamanho da janela
-altura_janela = float(input("Altura da janela (m): "))
-largura_janela = float(input("Largura da janela (m): "))
+altura_janela = float(input("Altura da janela (m) (Se não tiver, digite '0'):  "))
+largura_janela = float(input("Largura da janela (m) (Se não tiver, digite '0'): "))
 
 # Cálculo da área
 area_parede = altura_parede * largura_parede
@@ -20,13 +22,13 @@ area_final = area_parede - (area_porta + area_janela)
 
 # Rendimento da tinta
 ren=float (input ('Qual o rendimento da tinta (m² por litro): '))
-litros=area_final / rendimento
+litros=math.ceil(area_final / rendimento)
 
 # Preço por litro
 preco_litro=float (input ('Preço da tinta por litro (R$): '))
 custo=litros * preco_litro
 
 # Resultado
-print (f'\nÁrea a pintar: {área final:2f} m²')
+print (f'\nÁrea a pintar: {area_final:2f} m²')
 print (f'Quantidade de tinta: {litros:2f} ')
 print (f'Custo total em (R$) {custo:2f} ')
