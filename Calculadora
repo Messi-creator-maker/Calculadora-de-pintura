@@ -17,3 +17,16 @@ area_parede = altura_parede * largura_parede
 area_porta = altura_porta * largura_porta
 area_janela = altura_janela * largura_janela
 area_final = area_parede - (area_porta + area_janela)
+
+# Rendimento da tinta
+ren=float (input ('Qual o rendimento da tinta (m² por litro): '))
+litros=area_final / rendimento
+
+# Preço por litro
+preco_litro=float (input ('Preço da tinta por litro (R$): '))
+custo=litros * preco_litro
+
+# Resultado
+print (f'\nÁrea a pintar: {área final:2f} m²')
+print (f'Quantidade de tinta: {litros:2f} ')
+print (f'Custo total em (R$) {custo:2f} ')
