@@ -1,0 +1,19 @@
+print("=== Calculadora de Pintura ===")
+
+# Tamanho da parede
+altura_parede = float(input("Altura da parede (m): "))
+largura_parede = float(input("Largura da parede (m): "))
+
+# Tamanho da porta
+altura_porta = float(input("Altura da porta (m): "))
+largura_porta = float(input("Largura da porta (m): "))
+
+# Tamanho da janela
+altura_janela = float(input("Altura da janela (m): "))
+largura_janela = float(input("Largura da janela (m): "))
+
+# Cálculo da área
+area_parede = altura_parede * largura_parede
+area_porta = altura_porta * largura_porta
+area_janela = altura_janela * largura_janela
+area_final = area_parede - (area_porta + area_janela)
