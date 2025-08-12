@@ -1,4 +1,4 @@
-print("=== Calculadora de Pintura ===")
+print("===Calculadora de Pintura===")
 
 import math
 
@@ -9,20 +9,38 @@ largura_parede = float(input("Largura da parede (m): "))
 print ('\n===Tamanho da porta===')
 
 # Tamanho da porta
-altura_porta = float(input("\nAltura da porta (m) (Se não tiver, digite '0'): "))
-largura_porta = float(input("Largura da porta (m) (Se não tiver, digite '0'): "))
+tem_porta=str (input ('\nSua parede tem uma porta? ')).strip().lower()
+
+if tem_porta in ['sim', 's', 'yes', 'y']:
+	altura_porta = float(input("\nAltura da porta (m): "))
+	largura_porta = float(input("Largura da porta (m): "))
+else:
+	altura_porta=0
+	largura_porta=0
 
 print ('\n===Tamanho da janela===')
 
 # Tamanho da janela
-altura_janela = float(input("\nAltura da janela (m) (Se não tiver, digite '0'):  "))
-largura_janela = float(input("Largura da janela (m) (Se não tiver, digite '0'): "))
+tem_janela=str (input ('\nSua parede tem uma janela? ')).strip().lower()
+
+if tem_janela in ['sim', 's', 'yes', 'y']:
+	altura_janela = float(input("\nAltura da janela (m): "))
+	largura_janela = float(input("Largura da janela (m): "))
+else:
+	altura_janela=0
+	largura_janela=0
 
 # Cálculo da área
 area_parede = altura_parede * largura_parede
 area_porta = altura_porta * largura_porta
 area_janela = altura_janela * largura_janela
 area_final = area_parede - (area_porta + area_janela)
+
+# ERRO
+if area_final <=0:
+	print ('\nErro,a área útil para pintar, NÃO pode ser 0 ou negativa!')
+	input ('Pressione Enter para Sair...')
+	exit()
 
 # Rendimento da tinta
 ren=float (input ('\nQual o rendimento da tinta (m² por litro): '))
@@ -33,9 +51,8 @@ preco_litro=float (input ('Preço da tinta por litro (R$): '))
 custo=litros * preco_litro
 
 # Resultado
-print (f'\nÁrea a pintar: {area_final:2f} m²')
-print (f'Quantidade de tinta: {litros:2f} ')
-print (f'Custo total em (R$) {custo:2f} ')
-
+print (f'\nÁrea a pintar: {area_final:.2f} m²')
+print (f'Quantidade de tinta: {litros} ')
+print (f'Custo total em (R$) {custo:.2f} ')
 
 input ('\nPressione Enter para Sair...')
