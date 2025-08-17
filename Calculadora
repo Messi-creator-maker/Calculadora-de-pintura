@@ -1,48 +1,58 @@
 print("===Calculadora de Pintura===")
-
+n=1
 import math
 
-# Tamanho da parede
-altura_parede = float(input("\nAltura da parede (m): "))
-largura_parede = float(input("Largura da parede (m): "))
+while True:
+	# Tamanho da parede
+	altura_parede = float(input("\nAltura da parede (m): "))
+	largura_parede = float(input("Largura da parede (m): "))
 
-print ('\n===Tamanho da porta===')
+	print ('\n===Tamanho da porta===')
 
-# Tamanho da porta
-tem_porta=str (input ('\nSua parede tem uma porta? ')).strip().lower()
+	# Tamanho da porta
+	tem_porta=str (input ('\nSua parede tem uma porta? ')).strip().lower()
 
-if tem_porta in ['sim', 's', 'yes', 'y']:
-	altura_porta = float(input("\nAltura da porta (m): "))
-	largura_porta = float(input("Largura da porta (m): "))
-else:
-	altura_porta=0
-	largura_porta=0
+	if tem_porta in ['sim', 's', 'yes', 'y']:
+		altura_porta = float(input("\nAltura da porta (m): "))
+		largura_porta = float(input("Largura da porta (m): "))
+	else:
+		altura_porta=0
+		largura_porta=0
 
-print ('\n===Tamanho da janela===')
+	print ('\n===Tamanho da janela===')
 
-# Tamanho da janela
-tem_janela=str (input ('\nSua parede tem uma janela? ')).strip().lower()
+	# Tamanho da janela
+	tem_janela=str (input ('\nSua parede tem uma janela? ')).strip().lower()
 
-if tem_janela in ['sim', 's', 'yes', 'y']:
-	altura_janela = float(input("\nAltura da janela (m): "))
-	largura_janela = float(input("Largura da janela (m): "))
-else:
-	altura_janela=0
-	largura_janela=0
+	if tem_janela in ['sim', 's', 'yes', 'y']:
+		altura_janela = float(input("\nAltura da janela (m): "))
+		largura_janela = float(input("Largura da janela (m): "))
+	else:
+		altura_janela=0
+		largura_janela=0
 
-# Cálculo da área
-area_parede = altura_parede * largura_parede
-area_porta = altura_porta * largura_porta
-area_janela = altura_janela * largura_janela
-area_final = area_parede - (area_porta + area_janela)
+	# Cálculo da área
+	area_parede = altura_parede * largura_parede
+	area_porta = altura_porta * largura_porta
+	area_janela = altura_janela * largura_janela
+	area_final = area_parede - (area_porta + area_janela)
 
-# ERRO
-if area_final <=0:
-	print ('\nErro,a área útil para pintar, NÃO pode ser 0 ou negativa!')
-	input ('Pressione Enter para Sair...')
-	exit()
-
+	# ERRO
+	if area_final <=0:
+		print ('\nErro, a área útil para pintar, NÃO pode ser 0 ou negativa!')
+		n=0
+	if altura_porta>altura_parede or altura_janela>altura_parede:
+		print('\nErro, a área útil para pintar, NÃO pode ser 0 ou negativa!')
+		n=0
+	if largura_porta>largura_parede or largura_janela>largura_parede:
+		print('\nErro, a área útil para pintar, NÃO pode ser 0 ou negativa!')
+		n=0
+	if area_final >=0 and n==1:
+		break
 # Rendimento da tinta
+
+print ('\n===Rendimento da tinta===')
+
 ren=float (input ('\nQual o rendimento da tinta (m² por litro): '))
 litros=math.ceil(area_final / ren)
 
@@ -54,5 +64,6 @@ custo=litros * preco_litro
 print (f'\nÁrea a pintar: {area_final:.2f} m²')
 print (f'Quantidade de tinta: {litros} ')
 print (f'Custo total em (R$) {custo:.2f} ')
+
 
 input ('\nPressione Enter para Sair...')
