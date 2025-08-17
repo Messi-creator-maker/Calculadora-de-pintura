@@ -1,6 +1,7 @@
 print("===Calculadora de Pintura===")
 n=1
 import math
+from reportlab.pdfgen import canvas
 
 while True:
 	# Tamanho da parede
@@ -65,5 +66,24 @@ print (f'\nÁrea a pintar: {area_final:.2f} m²')
 print (f'Quantidade de tinta: {litros} ')
 print (f'Custo total em (R$) {custo:.2f} ')
 
+salvar = str(input("\nDeseja salvar o resultado em PDF? (s/n): ")).strip().lower()
+
+if salvar in ["s", "sim", "y", "yes"]:
+    # (3) Criar arquivo PDF
+    pdf = canvas.Canvas("resultado_calculo.pdf")
+
+    # (4) Escrever no PDF
+    pdf.setFont("Helvetica", 14)
+    pdf.drawString(50, 750, "Resultado da Calculadora de Pintura")
+    pdf.setFont("Helvetica", 12)
+    pdf.drawString(50, 700, f"Altura da parede: {altura_parede} m")
+    pdf.drawString(50, 680, f"Largura da parede: {largura_parede} m")
+    pdf.drawString(50, 660, f"Área final: {area_final:.2f} m²")
+    pdf.drawString(50, 640, f"Quantidade de litros de tinta: {litros} litros ")
+    pdf.drawString(50, 620, f"Custo total: R$ {custo:.2f}")
+
+    # (5) Salvar e fechar
+    pdf.save()
+    print("\n✅ Resultado salvo em 'resultado_calculo.pdf'")
 
 input ('\nPressione Enter para Sair...')
